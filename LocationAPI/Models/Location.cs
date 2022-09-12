@@ -12,7 +12,6 @@
     {
         public string StatusCode { get; set; }
         public string StatusMessage { get; set; }
-
         public LocationResponseModel Data { get; set; }
 
 

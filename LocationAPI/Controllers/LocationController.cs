@@ -18,7 +18,7 @@ namespace LocationAPI.Controllers
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(_appSetting.LocationApiUrl);
         }
-        // GET: api/<LocationController>
+
         [HttpGet]
         public async Task<IActionResult> GetCountryById(int id)
         {
@@ -31,29 +31,29 @@ namespace LocationAPI.Controllers
             return Ok(responseObj);
         }
 
-        // GET api/<LocationController>/5
-       /* [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        public async Task<IActionResult> GetStatesByCountryId(int id)
         {
-            return "value";
-        }*/
+            var response = await _httpClient.GetAsync($"/locationLevelOne/countryId/{id}");
+            response.EnsureSuccessStatusCode();
 
-        // POST api/<LocationController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
+            var message = await response.Content.ReadAsStringAsync();
+            var responseObj = JsonConvert.DeserializeObject<ApiResponseModel>(message);
+            return Ok(responseObj);
+
         }
 
-        // PUT api/<LocationController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpGet]
+        public async Task<IActionResult> GetStateById(int id)
         {
+            var response = await _httpClient.GetAsync($"/locationLevelOne/Id/{id}");
+            response.EnsureSuccessStatusCode();
+
+            var message = await response.Content.ReadAsStringAsync();
+            var responseObj = JsonConvert.DeserializeObject<ApiResponseModel>(message);
+            return Ok(responseObj);
+
         }
 
-        // DELETE api/<LocationController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
