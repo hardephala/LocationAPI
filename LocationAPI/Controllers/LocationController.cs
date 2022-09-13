@@ -19,11 +19,11 @@ namespace LocationAPI.Controllers
             _httpClient.BaseAddress = new Uri(_appSetting.LocationApiUrl);
         }
 
-        [HttpGet]
+        [HttpGet("country/id/{id}")]
         public async Task<IActionResult> GetCountryById(int id)
         {
             
-            var response = await _httpClient.GetAsync($"/country/id/{id}");
+            var response = await _httpClient.GetAsync($"country/id/{id}");
             response.EnsureSuccessStatusCode();
 
             var message = await response.Content.ReadAsStringAsync();
@@ -31,10 +31,10 @@ namespace LocationAPI.Controllers
             return Ok(responseObj);
         }
 
-        [HttpGet]
+        [HttpGet("states/countryId/{id}")]
         public async Task<IActionResult> GetStatesByCountryId(int id)
         {
-            var response = await _httpClient.GetAsync($"/locationLevelOne/countryId/{id}");
+            var response = await _httpClient.GetAsync($"locationLevelOne/countryId/{id}");
             response.EnsureSuccessStatusCode();
 
             var message = await response.Content.ReadAsStringAsync();
@@ -43,10 +43,10 @@ namespace LocationAPI.Controllers
 
         }
 
-        [HttpGet]
+        [HttpGet("state/id/{id}")]
         public async Task<IActionResult> GetStateById(int id)
         {
-            var response = await _httpClient.GetAsync($"/locationLevelOne/Id/{id}");
+            var response = await _httpClient.GetAsync($"locationLevelOne/id/{id}");
             response.EnsureSuccessStatusCode();
 
             var message = await response.Content.ReadAsStringAsync();
