@@ -20,9 +20,9 @@ namespace LocationAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<StateApiResponseModel>>> GetAll(int id, int page, int size)
+        public async Task<ActionResult<List<StateApiResponseModel>>> GetAll(int countryId, int page, int size)
         {
-            var countries = await _httpClient.GetAsync($"locationLevelOne/countryId/{id}?page={page}&size={size}");
+            var countries = await _httpClient.GetAsync($"locationLevelOne/countryId/{countryId}?page={page}&size={size}");
             countries.EnsureSuccessStatusCode();
 
             var message = await countries.Content.ReadAsStringAsync();
