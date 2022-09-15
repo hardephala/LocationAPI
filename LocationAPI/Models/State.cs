@@ -1,22 +1,22 @@
 ﻿namespace LocationAPI.Models
 {
-    public class CountryResponseModel
+    public class StateResponseModel
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string twoLetterCode { get; set; }
-        public string threeLetterCode { get; set; }
-        public string dialingCode { get; set; }
+        public string countryId { get; set; }
+        public string name { get; set; }
+        public string code { get; set; }
+        public string capital { get; set; }
     }
 
-    public class CountryApiResponseModel
+    public class StateApiResponseModel
     {
         public string StatusCode { get; set; }
         public string StatusMessage { get; set; }
-        public CountryResponseModel Data { get; set; }
+        public StateResponseModel Data { get; set; }
     }
 
-    public class CountryListApiResponseModel
+    public class StateListApiResponseModel
     {
         public string StatusCode { get; set; }
         public string StatusMessage { get; set; }
