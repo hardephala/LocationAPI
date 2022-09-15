@@ -4,8 +4,6 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-
     }
 
     public class ApiResponseModel
@@ -13,8 +11,6 @@
         public string StatusCode { get; set; }
         public string StatusMessage { get; set; }
         public LocationResponseModel Data { get; set; }
-
-
     }
 
 }
